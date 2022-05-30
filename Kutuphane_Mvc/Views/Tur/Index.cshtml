@@ -1,0 +1,49 @@
+@model List<EF_Core_MVC_Code.Models.Turler>
+@{
+
+    ViewData["Title"] = "Kitap Türleri";
+}
+<div class="container-fluid">
+    <div class="d-flex justify-content-center align-content-center">
+        <h1>Kitap Türleri</h1>
+        <br><br>
+        <label class="text-dark m-2"></label><a asp-action="Create"><i
+                class="bi bi-journal-plus btn btn-lg mb-1 bg-dark text-white"></i></a>
+    </div>
+    <div class="row ">
+        <div class="d-flex justify-content-center align-content-center col-md-8 col-lg-12 ">
+            <table class=" table table-dark w-50 text-center text-center w-50 ">
+                <thead>
+                    <tr>
+                        <th>Kitap Türü Id</th>
+                        <th>Kitap Türü</th>
+                        <th>Yapılacak İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var tur in Model)
+                    {
+                        <tr>
+                            <td>@tur.Id</td>
+                            <td>@tur.TurAd</td>
+                            <td>
+                                <a class="btn btn-lg btn-outline-success" asp-action="Details" asp-route-id="@tur.Id"><i
+                                    class="bi bi-ticket-detailed"></i></a>
+                                <a class="btn btn-lg btn-outline-warning" asp-action="Edit" asp-route-id="@tur.Id"><i
+                                    class="bi bi-pencil-square"></i></a>
+                                <a class="btn btn-lg btn-outline-danger" asp-action="Delete" asp-route-id="@tur.Id"><i
+                                    class="bi bi-trash"></i></a>
+                                <a class="btn btn-lg btn-outline-white text-white" asp-controller="Home" asp-action="Index"
+                                asp-route-id="@tur.Id"><i class="bi bi-house"></i></a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
